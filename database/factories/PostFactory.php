@@ -20,7 +20,7 @@ class PostFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'user_id' => Str::random(10),
+            'user_id' => fake()->numberBetween(1, 10),
         ];
     }
 }
