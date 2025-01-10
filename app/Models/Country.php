@@ -11,30 +11,13 @@ class Country extends Model
     /** @use HasFactory<\Database\Factories\CountryFactory> */
     use HasFactory;
 
-    // public function deployments(): HasManyThrough
-    // {
-    //     return $this->hasManyThrough(Deployment::class, Environment::class);
-    // }
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 
-    // public function posts()
-
-    // {
-
-    //     return $this->hasManyThrough(
-
-    //         Post::class,
-
-    //         User::class,
-
-    //         'country_id', // Foreign key on users table...
-
-    //         'user_id', // Foreign key on posts table...
-
-    //         'id', // Local key on countries table...
-
-    //         'id' // Local key on users table...
-
-    //     );
-
-    // }
+    public function posts(): HasManyThrough
+    {
+        return $this->hasManyThrough(Post::class,User::class,);
+    }
 }
